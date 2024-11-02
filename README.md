@@ -23,7 +23,7 @@ git clone https://github.com/antipeth/atpos-server.git
 cd antipethos
 ```
 
-copy the example and create your machine config, please replace YourHostname with your machine host name:
+copy the example and create your machine config, please replace YourWantName with your machine host name:
 
 ```
 # server node
