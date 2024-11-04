@@ -3,13 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { nixpkgs, home-manager, ... }@inputs:
+    { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
-      host = "server";
+      host = "test";
     in
     {
       nixosConfigurations = {
@@ -20,8 +24,12 @@
           };
           modules = [
             ./hosts/${host}/config.nix
+            inputs.disko.nixosModules.disko
           ];
         };
+      };
+      packages.${system} = {
+        image = self.nixosConfigurations.${host}.config.system.build.diskoImages;
       };
     };
 }
