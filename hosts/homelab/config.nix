@@ -58,7 +58,6 @@
 
   environment.systemPackages = with pkgs; [
     vim
-    virt-viewer
     micro
     wget
     curl
@@ -66,6 +65,7 @@
     fastfetch
     kubectl
     kubernetes-helm
+    kind
   ];
 
   environment.variables = {
@@ -86,14 +86,12 @@
       PermitRootLogin = "yes"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
   };
-  services.cockpit.enable = true;
 
   # first server
-  # services.k3s = {
-  #   enable = true;
-  #   role = "server";
-  #   package = pkgs.k3s_1_30;
-  # };
+  services.k3s = {
+    enable = true;
+    role = "server";
+  };
   # another
   # services.k3s = {
   #   enable = true;

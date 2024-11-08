@@ -69,9 +69,9 @@
     mutableUsers = false;
     users.root = {
       hashedPassword = "$y$j9T$dCZKGGtp932RhwMuaua54.$qKlsBjVBe54nWMmVGcshCK1fOwZ9Y0I3bZldkNZ5bCD"; # admin
-      openssh.authorizedKeys.keys = [
-        "<your ssh publkey>"
-      ];
+      # openssh.authorizedKeys.keys = [
+      #   "<your ssh publkey>"
+      # ];
     };
   };
 
