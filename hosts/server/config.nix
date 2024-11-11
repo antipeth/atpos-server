@@ -70,6 +70,7 @@
     fastfetch
     kubectl
     kubernetes-helm
+    k9s
   ];
 
   environment.variables = {
