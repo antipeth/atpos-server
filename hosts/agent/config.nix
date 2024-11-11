@@ -27,7 +27,7 @@
     };
   };
 
-  swapDevices = [{ device = "/swapfile"; size = 1075; }];
+  swapDevices = [{ device = "/swapfile"; size = 2075; }];
   # Enable networking
   # networking.networkmanager.enable = true;
   networking.hostName = host;
@@ -50,15 +50,20 @@
     LC_TIME = "en_US.UTF-8";
   };
 
- nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
   users = {
-    mutableUsers = true;
+    mutableUsers = false;
+    users.root = {
+      hashedPassword = "<your hashed pwd>";
+      openssh.authorizedKeys.keys = [
+        "<your ssh publkey>"
+      ];
+    };
   };
 
   environment.systemPackages = with pkgs; [
     vim
-    micro
     wget
     curl
     git
@@ -68,13 +73,13 @@
   ];
 
   environment.variables = {
-      KUBECONFIG = /etc/rancher/k3s/k3s.yaml;
+      # KUBECONFIG = /etc/rancher/k3s/k3s.yaml;
   };
 
    # Services to start
   services.openssh = {
     enable = true;
-    ports = [ 22 ];
+    ports = [ 222 ];
     settings = {
       PasswordAuthentication = true;
       AllowUsers = null; # Allows all users by default. Can be [ "user1" "user2" ]
@@ -90,7 +95,7 @@
     role = "agent"; # Or "agent" for worker only nodes
     token = "<randomized common secret>"; # use "cat /var/lib/rancher/k3s/server/node-token" to check
     serverAddr = "https://<ip of first node>:6443";
-    package = pkgs.k3s_1_30;
+    # package = pkgs.k3s_1_30;
   };
   # Optimization settings and garbage collection automation
   nix = {
