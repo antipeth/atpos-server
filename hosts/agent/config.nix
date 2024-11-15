@@ -7,6 +7,8 @@
 {
   imports = [
     ./hardware.nix
+    ../../packages/netdata.nix
+    # ../../packages/syncthing.nix
   ];
 
   boot = {

@@ -8,6 +8,8 @@
   imports = [
     ./hardware.nix
     ./disko.nix
+    ../../packages/netdata.nix
+    # ../../packages/syncthing.nix
   ];
 
   boot = {
