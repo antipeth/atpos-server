@@ -7,6 +7,7 @@
 {
   imports = [
     ./hardware.nix
+    ../../packages/k3s-server.nix
   ];
 
   boot = {
@@ -69,15 +70,13 @@
   ];
 
   environment.variables = {
-  #   ZANEYOS_VERSION = "2.2";
-  #   ZANEYOS = "true";
   #   KUBECONFIG = /etc/rancher/k3s/k3s.yaml;
   };
 
    # Services to start
   services.openssh = {
     enable = true;
-    ports = [ 22 ];
+    ports = [ 222 ];
     settings = {
       PasswordAuthentication = true;
       AllowUsers = null; # Allows all users by default. Can be [ "user1" "user2" ]
@@ -87,18 +86,6 @@
     };
   };
 
-  # first server
-  services.k3s = {
-    enable = true;
-    role = "server";
-  };
-  # another
-  # services.k3s = {
-  #   enable = true;
-  #   role = "server"; # Or "agent" for worker only nodes
-  #   token = "<randomized common secret>";
-  #   serverAddr = "https://<ip of first node>:6443";
-  # };
   # Optimization settings and garbage collection automation
   nix = {
     settings = {
