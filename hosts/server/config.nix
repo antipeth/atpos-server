@@ -74,6 +74,35 @@
   # Enable networking
   # networking.networkmanager.enable = true;
   networking.hostName = host;
+  networking = {
+    usePredictableInterfaceNames = false;
+    interfaces.eth0.ipv4.addresses = [
+      {
+        address = "100.100.100.100";
+        prefixLength = 24;
+      }
+    ];
+    defaultGateway = {
+      address = "100.100.100.1";
+      interface = "eth0";
+    };
+    interfaces.eth0.ipv6.addresses = [
+      {
+        address = "2227:1130:0:131::47c4:3c8c";
+        prefixLength = 64;
+      }
+    ];
+    defaultGateway6 = {
+      address = "2227:1130:0:131::1";
+      interface = "eth0";
+    };
+    nameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+      "2606:4700:4700::1111"
+      "2001:4860:4860::8888"
+    ];
+  };
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
