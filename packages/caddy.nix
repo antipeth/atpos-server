@@ -7,8 +7,12 @@
 {
   services.caddy = {
     enable = true;
-    virtualHosts."example.org".extraConfig = ''
-      reverse_proxy 127.0.0.1:8384  # for syncthing
+    virtualHosts."example.com"={
+    extraConfig = ''
+      reverse_proxy localhost:8384 {
+          header_up Host {upstream_hostport}
+      }
     '';
+    };
   };
 }

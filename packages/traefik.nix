@@ -26,7 +26,7 @@
 
       certificatesResolvers.myresolver.acme = {
 	      tlschallenge = true;
-        email = "0pt@disroot.org";
+        email = "youremail@domain.com";
         storage = "${config.services.traefik.dataDir}/acme.json";
         # httpChallenge.entryPoint = "web";
       };
