@@ -37,41 +37,56 @@
     };
     dynamicConfigOptions = {
       http = {
-       routers = {
-         syncthing = {
-	         entryPoints = [ "websecure" ];
-           rule = "Host(`1.example.com`)";
-           service = "syncthing";
-	         tls.certresolver = "myresolver";
-         };
-         netdata = {
-	         entryPoints = [ "websecure" ];
-           rule = "Host(`2.example.com`)";
-           service = "netdata";
-	         tls.certresolver = "myresolver";
-         };
-       };
-       services = {
-         syncthing = {
-           loadBalancer = {
-             servers = [
-               {
-                 url = "http://localhost:8384";
-               }
-             ];
-           };
-         };
-         netdata = {
-           loadBalancer = {
-             servers = [
-               {
-                 url = "http://localhost:19999";
-               }
-             ];
-           };
-         };
-       };
-     };   
+        routers = {
+          syncthing = {
+	          entryPoints = [ "websecure" ];
+            rule = "Host(`1.example.com`)";
+            service = "syncthing";
+	          tls.certresolver = "myresolver";
+          };
+          netdata = {
+	          entryPoints = [ "websecure" ];
+            rule = "Host(`2.example.com`)";
+            service = "netdata";
+	          tls.certresolver = "myresolver";
+          };
+          alist = {
+	          entryPoints = [ "websecure" ];
+            rule = "Host(`3.example.com`)";
+            service = "alist";
+	          tls.certresolver = "myresolver";
+          };
+        };
+        services = {
+          syncthing = {
+            loadBalancer = {
+              servers = [
+                {
+                  url = "http://localhost:8384";
+                }
+              ];
+            };
+          };
+          netdata = {
+            loadBalancer = {
+              servers = [
+                {
+                  url = "http://localhost:19999";
+                }
+              ];
+            };
+          };
+          alist = {
+            loadBalancer = {
+              servers = [
+                {
+                  url = "http://localhost:5244";
+                }
+              ];
+            };
+          };
+        };
+      };
     };
   };
 }

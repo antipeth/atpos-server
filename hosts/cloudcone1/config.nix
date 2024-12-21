@@ -9,7 +9,8 @@
     ./hardware.nix
     ../../packages/syncthing.nix
     ../../packages/caddy.nix
-    # ../../packages/netdata.nix
+    ../../packages/netdata.nix
+    ../../packages/docker.nix
     # ../../packages/traefik.nix
   ];
 
