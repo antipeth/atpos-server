@@ -149,7 +149,11 @@
     };
   };
 
-  networking.firewall.enable = false;
+  networking.nftables.enable = true;
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 222 443 ];
+  };
 
   system.stateVersion = "24.11";
 }

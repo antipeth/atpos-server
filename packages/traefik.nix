@@ -55,8 +55,10 @@
             rule = "Host(`3.example.com`)";
             service = "alist";
 	          tls.certresolver = "myresolver";
+            middlewares = "auth";
           };
         };
+        middlewares.auth.basicauth.users = "admin:$2y$10$0xNL0jk7lak4gX4R79FaCebxixJxF3d8KDC57S8PJULwShZ2cWCx2";
         services = {
           syncthing = {
             loadBalancer = {
