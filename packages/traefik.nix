@@ -57,6 +57,12 @@
 	          tls.certresolver = "myresolver";
             middlewares = "auth";
           };
+          uptime-kuma = {
+	          entryPoints = [ "websecure" ];
+            rule = "Host(`4.example.com`)";
+            service = "uptime-kuma";
+	          tls.certresolver = "myresolver";
+          };
         };
         middlewares.auth.basicauth.users = "admin:$2y$10$0xNL0jk7lak4gX4R79FaCebxixJxF3d8KDC57S8PJULwShZ2cWCx2";
         services = {
@@ -83,6 +89,15 @@
               servers = [
                 {
                   url = "http://localhost:5244";
+                }
+              ];
+            };
+          };
+          uptime-kuma = {
+            loadBalancer = {
+              servers = [
+                {
+                  url = "http://localhost:3001";
                 }
               ];
             };

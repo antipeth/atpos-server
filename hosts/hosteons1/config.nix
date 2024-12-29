@@ -10,8 +10,8 @@
     ../../packages/syncthing.nix
     ../../packages/caddy.nix
     ../../packages/netdata.nix
-    ../../packages/podman.nix
-    ../../packages/uptime-kuma.nix
+    # ../../packages/podman.nix
+    # ../../packages/uptime-kuma.nix
     # ../../packages/traefik.nix
   ];
 
@@ -61,22 +61,22 @@
     usePredictableInterfaceNames = false;
     interfaces.eth0.ipv4.addresses = [
       {
-        address = "142.171.85.245";
-        prefixLength = 26;
+        address = "103.124.107.65";
+        prefixLength = 24;
       }
     ];
     defaultGateway = {
-      address = "142.171.85.193";
+      address = "103.124.107.1";
       interface = "eth0";
     };
     interfaces.eth0.ipv6.addresses = [
       {
-        address = "2607:f130:0:16d::87c0:3482";
+        address = "2402:d0c0:10:53cc::1";
         prefixLength = 64;
       }
     ];
     defaultGateway6 = {
-      address = "2607:f130:0:16d::1";
+      address = "2402:d0c0:10::1";
       interface = "eth0";
     };
     nameservers = [
