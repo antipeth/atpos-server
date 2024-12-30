@@ -67,22 +67,22 @@
     usePredictableInterfaceNames = false;
     interfaces.eth0.ipv4.addresses = [
       {
-        address = "142.171.85.245";
+        address = "74.48.189.174";
         prefixLength = 26;
       }
     ];
     defaultGateway = {
-      address = "142.171.85.193";
+      address = "74.48.189.129";
       interface = "eth0";
     };
     interfaces.eth0.ipv6.addresses = [
       {
-        address = "2607:f130:0:16d::87c0:3482";
+        address = "2607:f130:0:17d::e1aa:3881";
         prefixLength = 64;
       }
     ];
     defaultGateway6 = {
-      address = "2607:f130:0:16d::1";
+      address = "2607:f130:0:17d::1";
       interface = "eth0";
     };
     nameservers = [
@@ -116,7 +116,7 @@
   users = {
     mutableUsers = false;
     users.root = {
-      hashedPassword = "$y$j9T$p82ajC6GM3YheN88bq.cP/$.Y9XkDToYGukBt24CkzKCcH5Xq9ogjh6mGpoS2litQ7";
+      hashedPassword = "$y$j9T$dcFrbOGuxUhbpBF2/3vbo0$JrWaPaPcqQMGdKwlzf8bMw3ilyXd6yc9zAvfxMlTqD9";
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINkg2UubcWG09dZbAOudxetJPC0Sgk2JM2uUCLEzY8Pv"
       ];

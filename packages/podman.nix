@@ -17,6 +17,6 @@
   };
   virtualisation.oci-containers.backend = "podman";
   virtualisation.oci-containers.containers = {
-    alist = import ./alist.nix;
+    # alist = import ./alist.nix;
   };
 }

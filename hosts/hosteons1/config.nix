@@ -7,12 +7,13 @@
 {
   imports = [
     ./hardware.nix
-    ../../packages/syncthing.nix
-    ../../packages/caddy.nix
-    ../../packages/netdata.nix
+    # ../../packages/caddy.nix
+    # ../../packages/dn42
+    # ../../packages/netdata.nix
     # ../../packages/podman.nix
-    # ../../packages/uptime-kuma.nix
+    # ../../packages/syncthing.nix
     # ../../packages/traefik.nix
+    # ../../packages/uptime-kuma.nix
   ];
 
   boot = {
@@ -32,13 +33,13 @@
 
         # DN42
         "net.ipv4.ip_forward" = 1;
-        "net.ipv6.conf.default.forwarding"= 1 ;
+        "net.ipv6.conf.default.forwarding" = 1;
         "net.ipv6.conf.all.forwarding" = 1;
         "net.ipv4.conf.default.rp_filter" = 0;
         "net.ipv4.conf.all.rp_filter" = 0;
       };
     };
- 
+
     # Bootloader.
     # loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
@@ -54,10 +55,15 @@
     };
   };
 
-  swapDevices = [{ device = "/swapfile"; size = 2075; }];
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 2075;
+    }
+  ];
   # Enable networking
   networking.hostName = host;
-    networking = {
+  networking = {
     usePredictableInterfaceNames = false;
     interfaces.eth0.ipv4.addresses = [
       {
@@ -110,7 +116,7 @@
   users = {
     mutableUsers = false;
     users.root = {
-      hashedPassword = "$y$j9T$p82ajC6GM3YheN88bq.cP/$.Y9XkDToYGukBt24CkzKCcH5Xq9ogjh6mGpoS2litQ7";
+      hashedPassword = "$y$j9T$9MsNIswva2STzSKAuZFVG.$svjTdbWdgqmHkwi5fAx7.HQfYHF9RkUegnu50jhI71C";
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINkg2UubcWG09dZbAOudxetJPC0Sgk2JM2uUCLEzY8Pv"
       ];
@@ -127,10 +133,10 @@
   ];
 
   environment.variables = {
-      # KUBECONFIG = /etc/rancher/k3s/k3s.yaml;
+    # KUBECONFIG = /etc/rancher/k3s/k3s.yaml;
   };
 
-   # Services to start
+  # Services to start
   services.openssh = {
     enable = true;
     ports = [ 222 ];
@@ -161,7 +167,10 @@
   networking.nftables.enable = true;
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 222 443 ];
+    allowedTCPPorts = [
+      222
+      443
+    ];
   };
 
   system.stateVersion = "24.11";
