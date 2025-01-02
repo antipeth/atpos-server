@@ -73,6 +73,7 @@
                   url = "http://localhost:8384";
                 }
               ];
+              passHostHeader = false;
             };
           };
           netdata = {
